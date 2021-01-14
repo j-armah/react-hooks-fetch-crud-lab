@@ -16,7 +16,7 @@ function App() {
   }, [])
 
   const onNewQuestion = (formData) => {
-    console.log(formData)
+    //console.log(formData)
     fetch("http://localhost:4000/questions", {
       method: "POST",
       headers: {
@@ -35,31 +35,18 @@ function App() {
   }
 
   const handleDelete = (id) => {
-    const newList = questions.filter(question => question.id !== id)
-    setQuestions(newList)
-
     fetch(`http://localhost:4000/questions/${id}`, {
       method: "DELETE"
     })
-    // .then(r => r.json())
-    // .then(data => {
-    //   console.log(data)
-    // })
+    .then(r => r.json())
+    .then(() => {
+      const newList = questions.filter(question => question.id !== id)
+      setQuestions(newList)
+    })
   }
 
   const handleCorrect = (index, id) => {
-    console.log(index, id)
-    
-    const updatedArray = questions.map(question => {
-      if (question.id === id) {
-        question.correctIndex = parseInt(index)
-        return question
-      } else {
-        return question
-      }
-    })
-    setQuestions(updatedArray)
-
+    //console.log(index, id)
     fetch(`http://localhost:4000/questions/${id}`, {
       method: "PATCH",
       headers: {
@@ -69,9 +56,21 @@ function App() {
         correctIndex: parseInt(index)
       })
     })
+    .then(r => json())
+    .then(() => {
+      const updatedArray = questions.map(question => {
+        if (question.id === id) {
+          question.correctIndex = parseInt(index)
+          return question
+        } else {
+          return question
+        }
+      })
+      setQuestions(updatedArray)
+    })
   }
  
-  console.log(questions)
+  //console.log(questions)
 
   return (
     <main>

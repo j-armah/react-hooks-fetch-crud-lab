@@ -78,17 +78,6 @@
       "id": 7
     },
     {
-      "prompt": "genshin",
-      "answers": [
-        "ganyu",
-        "diluc",
-        "jean",
-        "fischl"
-      ],
-      "correctIndex": 0,
-      "id": 8
-    },
-    {
       "prompt": "Whats right",
       "answers": [
         "wrong ",
@@ -97,7 +86,7 @@
         "wrong"
       ],
       "correctIndex": "2",
-      "id": 9
+      "id": 8
     }
   ]
 }
