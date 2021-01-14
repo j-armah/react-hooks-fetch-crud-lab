@@ -56,7 +56,7 @@ function App() {
         correctIndex: parseInt(index)
       })
     })
-    .then(r => json())
+    .then(r => r.json())
     .then(() => {
       const updatedArray = questions.map(question => {
         if (question.id === id) {
